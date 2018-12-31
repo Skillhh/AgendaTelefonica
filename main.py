@@ -162,6 +162,13 @@ def borrar_contacto():
 
 def exportar_contactos():
     """ Exportar Contactos """
+    mensaje = "Exportando Contactos"
+    print('*' * len(mensaje))
+    print(mensaje)
+    print('*' * len(mensaje))
+
+    documentos = open("contactos.csv", "w")
+    csv_agenda = csv.writer(documentos)
 
     lista = []
     for fila in Contactos.select():
@@ -169,19 +176,17 @@ def exportar_contactos():
         apellido = fila.apellido
         telefono = fila.telefono
         print("{}) {} {} {}".format(fila,nombre,apellido,telefono))
-        lista.insert([nombre,apellido,telefono])
-        '''lista[fila][x].insertend([nombre])
-        lista[fila][x].append(apellido)
-        lista[fila][x].append(telefono)'''
-        print(lista)
+        lista.append([fila,nombre,apellido,telefono])
 
-    '''documentos = open("contactos.csv", "w")
-    csv_agenda = csv.writer(documentos)
     for elemento in lista:
         csv_agenda.writerow(elemento)
 
-    documentos.close()'''
+    documentos.close()
 
+    mensaje = "Proceso finalizado"
+    print('*' * len(mensaje))
+    print(mensaje)
+    print('*' * len(mensaje))
 
 memu = OrderedDict([
     ('a', agregar_contacto),
