@@ -123,7 +123,10 @@ def actualizar_contacto():
                 nuevo_telefono = input("Nuevo numero de telefono: ")
                 Contactos.update(telefono=nuevo_telefono).where(Contactos.nombre == nombre).execute()
                 print("El numero telefonico ha sido actualizado.")
-        print()
+        mensaje = "Contacto Actulizado."
+        print('*' * len(mensaje))
+        print(mensaje)
+        print('*' * len(mensaje))
     except:
         mensaje = "El contacto no existe."
         print('*' * len(mensaje))
@@ -166,10 +169,11 @@ def exportar_contactos():
         apellido = fila.apellido
         telefono = fila.telefono
         print("{}) {} {} {}".format(fila,nombre,apellido,telefono))
-
+        lista.insert([nombre,apellido,telefono])
         '''lista[fila][x].insertend([nombre])
         lista[fila][x].append(apellido)
         lista[fila][x].append(telefono)'''
+        print(lista)
 
     '''documentos = open("contactos.csv", "w")
     csv_agenda = csv.writer(documentos)
